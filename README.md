@@ -1,27 +1,47 @@
-# Challenge
+Description:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Thanks you for your interesting in working with the PetPro Connect team at Boehringer-Ingelheim. To ensure we are hiring developers that meet our development team’s standards we ask each candidate moving forward in the hiring process to complete a coding project to showcase their development skills.
 
-## Development server
+ 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Project Overview:
 
-## Code scaffolding
+1.     Develop an SPA Web app with Angular 4 or higher (Angular 8 desired).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.     Upload the results into a repository and perform commits based on features development (Bitbucket repository desired).
 
-## Build
+3.     Use the following API: https://jsonplaceholder.typicode.com/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4.     Once complete send us back the URL to your code repository for review
 
-## Running unit tests
+Required Application Features:
+1.     Show a common single header for all the generated pages.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2.     The site should have a main/home page with a list of every post available
 
-## Running end-to-end tests
+a.     The list should be filterable by the user, each time that a user is selected, the list should display those post created by the “filtered” user.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+3.     Add a CTA button that allows a new post to be generated and assign it to any user.
 
-## Further help
+4.     Every listed post should have a button to allow post deletion, please simulate this functionality with the corresponding endpoint.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+5.     When one of the listed posts is selected, the user should be redirected to the post details in a new page or component.
+
+6.     Post Details page should display all the post related information.
+
+a.     In addition, it should include a button to show/hide all its comments.
+
+7.     When accessing the site url/post/5 the details related to post with id 5 should be displayed.
+
+ 
+
+Tips:
+·       Develop the app based on best practices.
+
+·       Comment your code as necessary.
+
+·       Handle errors showings alerts
+
+·       Use Angular’s main features
+
+·       Estimated time for completion: 6 to 8 hrs.
