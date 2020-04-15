@@ -1,48 +1,6 @@
 <div class="grid-container">
     <h1 class="mat-h1">Posts</h1>
-    <mat-accordion class="accordion-headers-align" hideToggle>
-        <mat-expansion-panel *ngFor="let post of postData, let $index"
-                             [expanded]="postData[$index] === post"
-                             (opened)="expandedItem = post">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="post-id">
-                    <span> {{post.id}} </span>
-                  </div>
-                  <div class="post-title">
-                    <span>{{post.title}}</span>
-                  </div>
-                </mat-panel-title>
-                <mat-panel-description class="post-user">
-                   <span> {{post.userId}} </span>
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-
-            <div class="post-body">
-                <span> {{post.body}} </span>
-                <div class="show-comments-toggle">
-                    <button mat-button color="primary" (click)="showComments(post)">SHOW COMMENTS</button>
-                </div>
-                <div class="post-comments">
-                    <mat-list>
-                        <mat-list-item *ngFor="let comment of post.comments">
-                                    <span mat-list-avatar>{{comment.id}} </span>
-                                    <div mat-line>{{comment.email}}</div>
-                                    <div mat-line> {{comment.name}} </div>
-                                    <div mat-line class="comment-body">{{comment.body}} </div>
-                                </mat-list-item>
-                    </mat-list>
-                </div>
-            </div>
-            <mat-action-row>
-
-                <button mat-button
-                        color="primary"
-                        (click)="null">Save</button>
-            </mat-action-row>
-        </mat-expansion-panel>
-
-    </mat-accordion>
+    <bi-posts></bi-posts>
 
     <!-- <mat-card>
         <mat-card-header>

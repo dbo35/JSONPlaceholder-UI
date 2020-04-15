@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { JsonPlaceholderService, ENDPOINTS } from '../services/json-placeholder.service';
-import { Post } from '../models/post.model';
-import { Observable, of } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'bi-dashboard',
@@ -12,8 +8,7 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  postData: Post[];
-  expandedItem: Post | null;
+ 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -35,23 +30,9 @@ export class DashboardComponent implements OnInit {
     })
   );
 
-  posts: Observable<Post[]>;
-
-  constructor(private breakpointObserver: BreakpointObserver, private service: JsonPlaceholderService) { }
-
-    showComments(post: Post) {
-      this.service.get(ENDPOINTS.POSTS, `/${post.id}/comments`)
-        .subscribe( (next) => {
-          post.comments = next;
-          post = Object.assign({}, post);
-        });
-    }
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit() {
-    this.service.get(ENDPOINTS.POSTS)
-      .subscribe((next: Post[]) => {
-        this.postData = next;
-      });
   }
 
 }

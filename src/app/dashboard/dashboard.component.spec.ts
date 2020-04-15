@@ -27,7 +27,7 @@ describe('DashboardComponent', () => {
         MatIconModule,
         MatMenuModule,
       ],
-      providers: [{provide: JsonPlaceholderService, useValue: { get() { return of([])} } }]
+      providers: [{ provide: JsonPlaceholderService, useValue: { get: () => of([]) } }]
     }).compileComponents();
   }));
 
