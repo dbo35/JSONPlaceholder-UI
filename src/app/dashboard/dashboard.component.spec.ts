@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { DashboardComponent } from './dashboard.component';
+import { JsonPlaceholderService } from '../services/json-placeholder.service';
+import { of } from 'rxjs';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -24,7 +26,8 @@ describe('DashboardComponent', () => {
         MatGridListModule,
         MatIconModule,
         MatMenuModule,
-      ]
+      ],
+      providers: [{provide: JsonPlaceholderService, useValue: { get() { return of([])} } }]
     }).compileComponents();
   }));
 
