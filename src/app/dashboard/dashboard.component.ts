@@ -5,7 +5,6 @@ import { JsonPlaceholderService, ENDPOINTS } from '../services/json-placeholder.
 import { Post } from '../models/post.model';
 import { Observable, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
-import { PosttableItem } from '../posttable/posttable-datasource';
 
 @Component({
   selector: 'bi-dashboard',

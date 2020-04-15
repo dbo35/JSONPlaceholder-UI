@@ -16,7 +16,6 @@ import { NavComponent } from './nav/nav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
-import { PosttableComponent } from './posttable/posttable.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,7 +25,6 @@ import { MaterialModule } from './material.module';
     AppComponent,
     DashboardComponent,
     NavComponent,
-    PosttableComponent
   ],
   imports: [
     BrowserModule,
