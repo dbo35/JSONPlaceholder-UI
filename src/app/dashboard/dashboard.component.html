@@ -21,13 +21,16 @@
             <div class="post-body">
                 <span> {{post.body}} </span>
                 <div class="show-comments-toggle">
-                    <button mat-button (click)="showComments(post)">SHOW COMMENTS</button>
+                    <button mat-button color="primary" (click)="showComments(post)">SHOW COMMENTS</button>
                 </div>
                 <div class="post-comments">
                     <mat-list>
                         <mat-list-item *ngFor="let comment of post.comments">
-                            {{comment}}
-                        </mat-list-item>
+                                    <span mat-list-avatar>{{comment.id}} </span>
+                                    <div mat-line>{{comment.email}}</div>
+                                    <div mat-line> {{comment.name}} </div>
+                                    <div mat-line class="comment-body">{{comment.body}} </div>
+                                </mat-list-item>
                     </mat-list>
                 </div>
             </div>
