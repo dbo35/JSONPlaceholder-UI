@@ -5,6 +5,7 @@ export class Post {
   id: number | string;
   title: string;
   body: string;
+  showComments?: boolean;
   comments: any;
   constructor(props?: { [key: string]: any }) {
     if (!props && !this.id) {

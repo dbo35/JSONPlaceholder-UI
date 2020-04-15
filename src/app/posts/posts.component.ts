@@ -15,11 +15,16 @@ export class PostsComponent implements OnInit {
   constructor(private service: JsonPlaceholderService) { }
 
   showComments(post: Post) {
+    post.showComments = true;
     this.service.get(ENDPOINTS.POSTS, `/${post.id}/comments`)
       .subscribe((next) => {
         post.comments = next;
         post = Object.assign({}, post);
       });
+  }
+
+  hideComments(post: Post) {
+    post.showComments = false;
   }
 
   ngOnInit(): void {

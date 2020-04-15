@@ -19,9 +19,10 @@
       <div class="post-body">
           <span> {{post.body}} </span>
           <div class="show-comments-toggle">
-              <button mat-button color="primary" (click)="showComments(post)">SHOW COMMENTS</button>
+              <button mat-button *ngIf="!post.showComments" color="primary" (click)="showComments(post)">SHOW COMMENTS</button>
+              <button mat-button *ngIf="post.showComments" color="primary" (click)="hideComments(post)">HIDE COMMENTS</button>
           </div>
-          <div class="post-comments">
+          <div class="post-comments" *ngIf="post.showComments">
               <mat-list>
                   <mat-list-item *ngFor="let comment of post.comments">
                               <span mat-list-avatar>{{comment.id}} </span>
