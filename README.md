@@ -1,6 +1,3 @@
-Description:
-
-Thanks you for your interesting in working with the PetPro Connect team at Boehringer-Ingelheim. To ensure we are hiring developers that meet our development team’s standards we ask each candidate moving forward in the hiring process to complete a coding project to showcase their development skills.
 
  
 
