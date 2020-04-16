@@ -8,11 +8,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { PostsComponent } from './posts/posts.component';
+import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
