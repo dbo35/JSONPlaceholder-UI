@@ -1,5 +1,5 @@
 <mat-accordion class="accordion-headers-align" hideToggle>
-  <mat-expansion-panel *ngFor="let post of postData, let $index"
+  <mat-expansion-panel *ngFor="let post of postData | async, let $index"
                        [expanded]="postData[$index] === post"
                        (opened)="expandedItem = post">
       <mat-expansion-panel-header>
@@ -37,7 +37,7 @@
 
           <button mat-button
                   color="primary"
-                  (click)="null">DELETE POST</button>
+                  (click)="delete(post)">DELETE POST</button>
       </mat-action-row>
   </mat-expansion-panel>
 

@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { JsonPlaceholderService, ENDPOINTS } from '../services/json-placeholder.service';
 import { PostItem } from '../models/post.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'bi-posts',
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit, OnDestroy {
-  @Input() postData: PostItem[];
+  @Input() postData: Observable<PostItem[]>;
+  @Output() deleted = new EventEmitter<PostItem>();
   expandedItem: PostItem | null;
   constructor(private service: JsonPlaceholderService) { }
 
@@ -27,13 +28,12 @@ export class PostsComponent implements OnInit, OnDestroy {
     post.showComments = false;
   }
 
+  /** one way data flow, emit event to parent and let it flow back through the input. */
+  delete(post) {
+    this.deleted.emit(post);
+  }
   ngOnInit(): void {
-    if (!this.postData) {
-      this.service.get(ENDPOINTS.POSTS)
-        .subscribe((next: PostItem[]) => {
-          this.postData = next;
-        });
-    }
+
   }
 
   ngOnDestroy() {

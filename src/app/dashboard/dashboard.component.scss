@@ -2,15 +2,15 @@
   margin: 20px;
   display: flex;
   flex-direction: row;
-  flex-basis: 0;
+  flex-basis: 1;
+  justify-content: space-evenly;
 }
 
 .posts {
-  flex: 1 1 50%;
+  flex-basis: 60%;
 }
 .users {
  flex-direction: column;
- width: 40%;
   bi-user {
     margin: 16px;
   }

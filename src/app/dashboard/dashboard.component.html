@@ -1,11 +1,20 @@
 <div class="grid-container">
+
+    <div class="posts" *ngIf="postData">
     <h1 class="mat-h1">Posts</h1>
-    <div class="posts">
-        <bi-posts></bi-posts>
+
+        <bi-posts [postData]="postData" (deleted)="deletePost($event)"></bi-posts>
     </div>
+
     <div class="users">
-        <div >
-            <bi-user *ngFor="let user of userData | async" [user]="user" (filterBy)="filterByUser($event)" (reloadDataWith)="refresh($event)"></bi-user>
+        <h1 class="mat-h1">Users</h1>
+
+
+        <div>
+            <bi-user *ngFor="let user of userData | async"
+                     [user]="user"
+                     (filterBy)="filterByUser($event)"
+                     (reloadDataWith)="refresh($event)"></bi-user>
         </div>
     </div>
 
