@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'bi-new-post',
@@ -8,25 +8,32 @@ import { MatDialogRef } from '@angular/material/dialog';
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Title</mat-label>
-    <input matInput [(ngModel)]="data?.user.title">
+    <input matInput [(ngModel)]="post.title">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Body</mat-label>
-    <input matInput [(ngModel)]="data?.user.body">
+    <input matInput [(ngModel)]="post.body">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="closeDialog()">cancel</button>
-  <button mat-button (click)="closeDialog(data)" cdkFocusInitial>SUBMIT</button>
+  <button mat-button (click)="closeDialog(post)" cdkFocusInitial>SUBMIT</button>
 </div>
   `
 })
 export class NewPostComponent {
-  data;
-  constructor(public dialogRef: MatDialogRef<NewPostComponent> ) {
+  data: any;
+  post = {
+    title: '',
+    body: '',
+    userId: null
+  }
+  constructor(public dialogRef: MatDialogRef<NewPostComponent>, @Inject(MAT_DIALOG_DATA) data: any) {
+    this.data = data;
   }
 
   closeDialog(data?: any) {
-    this.dialogRef.close(data);
+    this.post.userId = this.data.id;
+    this.dialogRef.close(this.post);
   }
 }

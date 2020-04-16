@@ -6,10 +6,14 @@
 }
 
 .posts {
-  flex: 1 1 auto;
+  flex: 1 1 50%;
 }
 .users {
- flex-direction: column; 
+ flex-direction: column;
+ width: 40%;
+  bi-user {
+    margin: 16px;
+  }
 }
 
 

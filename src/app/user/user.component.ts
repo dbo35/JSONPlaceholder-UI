@@ -21,6 +21,9 @@ export class UserComponent implements OnInit {
 
   createPost(user: User) {
     this.dialogRef = this.dialog.open(NewPostComponent);
+    this.dialogRef.afterOpened().subscribe( (next) => {
+      this.dialogRef.componentInstance.data = this.user;
+    });
     this.dialogRef.afterClosed().subscribe( (next) => {
       if (next) {
         this.service.post(ENDPOINTS.POSTS, {userId: this.user.id, ...next})

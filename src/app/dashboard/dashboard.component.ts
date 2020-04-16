@@ -16,20 +16,17 @@ export class DashboardComponent implements OnInit {
   constructor(private service: JsonPlaceholderService) { }
 
   filterByUser(id?: number) {
+    console.log({filterByUser: id});
     if (!!id) {
       this.postData = this.service.get(ENDPOINTS.POSTS, `?userId=${id}`) as Observable<PostItem[]>;
     }
   }
 
   refresh(post?: PostItem) {
-    this.postData = this.service.get(ENDPOINTS.POSTS).pipe(
-      switchMap( (next) => {
-        if (post) {
-          next.push(post);
-        }
-        return of(next);
-      })
-    ) as Observable<PostItem[]>;
+    console.log()
+    this.service.get(ENDPOINTS.POSTS).subscribe( (next) => {
+      this.postData = of([post, ...next]) as Observable<PostItem[]>;
+     }) ;
 
   }
 
