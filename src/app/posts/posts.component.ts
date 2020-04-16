@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { JsonPlaceholderService, ENDPOINTS } from '../services/json-placeholder.service';
-import { Post } from '../models/post.model';
+import { PostItem } from '../models/post.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent implements OnInit {
-  postData: Post[];
-  expandedItem: Post | null;
-  posts: Observable<Post[]>;
+export class PostsComponent implements OnInit, OnDestroy {
+  @Input() postData: PostItem[];
+  expandedItem: PostItem | null;
   constructor(private service: JsonPlaceholderService) { }
 
-  showComments(post: Post) {
+  showComments(post: PostItem) {
     post.showComments = true;
+    // We are calling the server again in case the comments have changed.
     this.service.get(ENDPOINTS.POSTS, `/${post.id}/comments`)
       .subscribe((next) => {
         post.comments = next;
@@ -23,15 +23,21 @@ export class PostsComponent implements OnInit {
       });
   }
 
-  hideComments(post: Post) {
+  hideComments(post: PostItem) {
     post.showComments = false;
   }
 
   ngOnInit(): void {
-    this.service.get(ENDPOINTS.POSTS)
-      .subscribe((next: Post[]) => {
-        this.postData = next;
-      });
+    if (!this.postData) {
+      this.service.get(ENDPOINTS.POSTS)
+        .subscribe((next: PostItem[]) => {
+          this.postData = next;
+        });
+    }
+  }
+
+  ngOnDestroy() {
+
   }
 
 }
