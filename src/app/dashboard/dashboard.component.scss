@@ -8,9 +8,11 @@
 
 .posts {
   flex-basis: 60%;
+  max-width: 50%;
 }
 .users {
  flex-direction: column;
+ max-width: 35%;
   bi-user {
     margin: 16px;
   }
