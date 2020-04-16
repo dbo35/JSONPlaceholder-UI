@@ -1,6 +1,13 @@
 <div class="grid-container">
     <h1 class="mat-h1">Posts</h1>
-    <bi-posts></bi-posts>
+    <div class="posts">
+        <bi-posts></bi-posts>
+    </div>
+    <div class="users">
+        <div >
+            <bi-user *ngFor="let user of userData | async" [user]="user" (filterBy)="filterByUser($event)" (reloadDataWith)="refresh($event)"></bi-user>
+        </div>
+    </div>
 
     <!-- <mat-card>
         <mat-card-header>
